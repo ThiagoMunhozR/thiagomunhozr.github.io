@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiago Munhoz Radde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            color: #007BFF;
+            font-size: 2.5em;
+        }
+        .header a {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .header a:hover {
+            background-color: #0056b3;
+        }
+        .section {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h2 {
+            color: #007BFF;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #007BFF;
+            display: inline-block;
+        }
+        .collapsible {
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #343a40;
+            font-size: 1em;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #6c757d;
+        }
+        .content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .content.show {
+            display: block;
+        }
+        .experience, .skills {
+            margin-top: 20px;
+        }
+        .experience-item, .skills-item {
+            margin-bottom: 15px;
+            border-left: 2px solid #007BFF;
+            padding-left: 10px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .experience-item.show, .skills-item.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .experience-item.hidden, .skills-item.hidden {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        .job-title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .company, .date {
+            color: #6c757d;
+        }
+        .skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skills ul li {
+            background-color: #007BFF;
+            color: #fff;
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer a {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .footer a:hover {
+            background-color: #0056b3;
+        }
+        .icon {
+            transition: transform 0.2s ease;
+        }
+        .collapsible.active .icon {
+            transform: rotate(180deg);
+        }
+        .section-shadow {
+            box-shadow: 0 -20px 20px -20px rgba(0, 0, 0, 0.2);
+        }
+        .company-container {
+            margin-bottom: 20px;
+        }
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .company-title {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thiago Munhoz Radde</h1>
+            <a href="https://www.linkedin.com/in/ThiagoMunhozR" target="_blank">LinkedIn</a>
+        </div>
+        <div class="section">
+            <h2>Sobre</h2>
+            <p>Olá! Meu nome é Thiago, atualmente, ocupo o cargo de Desenvolvedor Júnior na GVdasa Inteligência Educacional, enquanto curso Análise e Desenvolvimento de Sistemas na Ulbra. Meu interesse por desafios e busca constante por aprimoramento são pilares que impulsionam minha carreira.</p>
+            <button class="collapsible">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <div class="content">
+                <p>Minha trajetória na GVDASA começou como estagiário, e graças a empresa que confiou e apostou em mim, conquistei uma progressão para o cargo de Desenvolvedor Trainee onde, aprimorei ainda mais minhas habilidades em SQL Server Management Studio, Borland Delphi e GitFlow, e ao longo do tempo, meu comprometimento com a qualidade do trabalho e minha busca constante por aprimoramento técnico me permitiram evoluir e assumir o cargo de Desenvolvedor Júnior em um espaço de tempo de incríveis 9 meses.</p>
+                <p>Minha jornada no mundo da programação começou durante minha graduação na Universidade Estadual do Rio Grande do Sul (UERGS), onde tive a oportunidade de participar de um projeto de extensão que envolveu o desenvolvimento de um aplicativo para smartphones com integração GPS utilizando Arduino, visando o rastreamento de embarcações pesqueiras no litoral do estado. Essa experiência foi fundamental para aprimorar minhas habilidades em Flutter, Arduino e SQL. Também tive a oportunidade enriquecedora de exercer a função de Monitor Acadêmico, colaborando com a elaboração de programas de atividades e auxiliando no preparo de material didático e experimental, bem como na orientação de alunos em disciplinas como Álgebra Linear e Geometria Analítica. Essa experiência fortaleceu minhas habilidades de comunicação interpessoal e competências interpessoais.</p>
+                <p>Quer saber como transformo linhas de código em soluções incríveis? Vamos conversar e trocar ideias sobre o mundo da programação! Estou sempre disponível para conectar e compartilhar novas experiências. Vamos nessa?</p>
+            </div>
+        </div>
+        <div class="section experience">
+            <h2>Experiência</h2>
+            <button class="collapsible">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <div class="content">
+                <div class="experience-item hidden">
+                    <p class="job-title">Desenvolvedor Júnior</p>
+                    <p class="company">GVdasa Inteligência Educacional</p>
+                    <p class="date">mar de 2023 - o momento · São Leopoldo, Rio Grande do Sul, Brasil</p>
+                    <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação.</p>
+                </div>
+                <div class="experience-item hidden">
+                    <p class="job-title">Desenvolvedor Trainee</p>
+                    <p class="company">GVdasa Inteligência Educacional</p>
+                    <p class="date">jul de 2022 - mar de 2023 · 9 meses</p>
+                </div>
+                <div class="experience-item hidden">
+                    <p class="job-title">Estagiário em Programação</p>
+                    <p class="company">GVdasa Inteligência Educacional</p>
+                    <p class="date">nov de 2021 - jul de 2022 · 9 meses</p>
+                </div>
+                <div class="experience-item hidden">
+                    <p class="job-title">Desenvolvimento de app - ITAPEVA</p>
+                    <p class="company">Universidade Estadual do Rio Grande do Sul - UERGS</p>
+                    <p class="date">ago de 2021 - jul de 2022 · 1 ano</p>
+                    <p class="description">Projeto de extensão para desenvolvimento e aprimoramento de um aplicativo para smartphones e a elaboração de um módulo GPS com Arduino sobre o rastreamento de embarcações pesqueiras no litoral do estado.</p>
+                </div>
+                <div class="experience-item hidden">
+                    <p class="job-title">Monitoria Acadêmica</p>
+                    <p class="company">Universidade Estadual do Rio Grande do Sul - UERGS</p>
+                    <p class="date">abr de 2021 - jul de 2021 · 4 meses</p>
+                    <p class="description">Elaboração do programa de atividades em conjunto com o professor da disciplina de Álgebra Linear e Geometria Analítica e auxílio na preparação de material didático e experimental, na orientação de alunos e na realização de trabalhos experimentais.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section skills">
+            <h2>Habilidades</h2>
+            <ul>
+                <li>SQL Server Management Studio</li>
+                <li>Borland Delphi</li>
+                <li>GitFlow</li>
+                <li>Flutter</li>
+                <li>Arduino</li>
+                <li>SQL</li>
+                <li>Comunicação Interpessoal</li>
+                <li>Competências Interpessoais</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
+                content.classList.toggle('show');
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    entry.target.classList.remove('hidden');
+                }
+            });
+        });
+
+        document.querySelectorAll('.experience-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
