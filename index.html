@@ -79,7 +79,7 @@
         .collapsible.active .icon {
             transform: rotate(180deg);
         }
-		.collapsibleTitulos {
+		.collapsibleBotaoEXP {
 			cursor: pointer;
 			border: none;
 			background: none;
@@ -97,12 +97,21 @@
 			z-index: 1; /* Adicionamos z-index para garantir que os botões estejam sempre na frente */
 		}
 
-		.collapsibleTitulos:hover {
+		.collapsibleBotaoEXP:hover {
 			background-color: #6c757d;
 		}
 
-		.collapsibleTitulos.active .icon {
+		.collapsibleBotaoEXP.active .icon {
 			transform: rotate(180deg);
+		}
+		.collapsible-title {
+			cursor: pointer;
+			color: #343a40;
+			transition: color 0.3s ease;
+		}
+
+		.collapsible-title:hover {
+			color: #6c757d;
 		}
         .content {
             display: none;
@@ -189,13 +198,24 @@
             object-fit: cover;
         }
         .company-title {
-            display: inline-block;
+			display: inline-block;
             vertical-align: middle;
             font-weight: bold;
             font-size: 1.2em;
 			display: flex;
 			align-items: center;
-        }
+		}
+
+		.collapsible-title {
+			cursor: pointer;
+			color: #343a40;
+			transition: color 0.3s ease;
+			margin-left: 10px;
+		}
+		.collapsible-title:hover,
+		.collapsible:hover {
+			color: #6c757d;
+		}
     </style>
 </head>
 <body>
@@ -221,12 +241,11 @@
         <div class="section experience">
 			<h2>Experiência</h2>
 			
-			<!-- Primeira empresa -->
 			<div class="company-container">
 				<div class="company-title">
 					<div class="company-logo"><img src="images/gvdasa_logo.jpg" alt="GVdasa Logo"></div>
-					<span>GVdasa Inteligência Educacional</span>
-					<button class="collapsibleTitulos">
+					<span class="collapsible-title">GVdasa Inteligência Educacional</span>
+					<button class="collapsibleBotaoEXP">
 						<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
 						</svg>
@@ -252,8 +271,8 @@
 			<div class="company-container">
 				<div class="company-title">
 					<div class="company-logo"><img src="images/uergs-logo.png" alt="UERGS Logo"></div>
-					<span>Universidade Estadual do Rio Grande do Sul - UERGS</span>
-					<button class="collapsibleTitulos">
+					<span class="collapsible-title">Universidade Estadual do Rio Grande do Sul - UERGS</span>
+					<button class="collapsibleBotaoEXP">
 						<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
 						</svg>
@@ -290,14 +309,19 @@
         </div>
     </div>
     <script>
-        document.querySelectorAll('.collapsibleTitulos').forEach(button => {
-			button.addEventListener('click', () => {
+        <!-- Expandir experiencias através do título e botão -->
+		document.querySelectorAll('.collapsible-title, .collapsibleBotaoEXP').forEach(element => {
+			element.addEventListener('click', () => {
+				const companyTitle = element.closest('.company-title');
+				const button = companyTitle.querySelector('.collapsibleBotaoEXP');
+				const content = companyTitle.nextElementSibling;
+				
 				button.classList.toggle('active');
-				const content = button.parentElement.nextElementSibling;
 				content.classList.toggle('show');
 			});
 		});
 		
+		<!-- Expandir sobre através do botão -->
 		document.querySelectorAll('.collapsible').forEach(button => {
           button.addEventListener('click', () => {
             button.classList.toggle('active');
