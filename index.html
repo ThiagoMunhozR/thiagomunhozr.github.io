@@ -79,6 +79,31 @@
         .collapsible.active .icon {
             transform: rotate(180deg);
         }
+		.collapsibleTitulos {
+			cursor: pointer;
+			border: none;
+			background: none;
+			color: #343a40;
+			font-size: 1em;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background-color 0.3s ease;
+			bottom: 20px;
+			right: 20px;
+			z-index: 1; /* Adicionamos z-index para garantir que os botões estejam sempre na frente */
+		}
+
+		.collapsibleTitulos:hover {
+			background-color: #6c757d;
+		}
+
+		.collapsibleTitulos.active .icon {
+			transform: rotate(180deg);
+		}
         .content {
             display: none;
             overflow: hidden;
@@ -168,6 +193,8 @@
             vertical-align: middle;
             font-weight: bold;
             font-size: 1.2em;
+			display: flex;
+			align-items: center;
         }
     </style>
 </head>
@@ -192,20 +219,22 @@
             </div>
         </div>
         <div class="section experience">
-            <h2>Experiência</h2>
-            <button class="collapsible">
-                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
-                </svg>
-            </button>
-            <div class="content">
-                <div class="company-container">
-                    <div class="company-title">
-                        <div class="company-logo"><img src="images/gvdasa_logo.jpg" alt="GVdasa Logo"></div>
-                        GVdasa Inteligência Educacional
-                    </div>
-                    <div class="experience-item hidden">
-                        <p class="job-title">Desenvolvedor Júnior</p>
+			<h2>Experiência</h2>
+			
+			<!-- Primeira empresa -->
+			<div class="company-container">
+				<div class="company-title">
+					<div class="company-logo"><img src="images/gvdasa_logo.jpg" alt="GVdasa Logo"></div>
+					<span>GVdasa Inteligência Educacional</span>
+					<button class="collapsibleTitulos">
+						<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
+						</svg>
+					</button>
+				</div>
+				<div class="content">
+					<div class="experience-item hidden">
+						<p class="job-title">Desenvolvedor Júnior</p>
                         <p class="date">março de 2023 - o momento · São Leopoldo, Rio Grande do Sul, Brasil</p>
                         <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação. </p>
 					</div>
@@ -218,11 +247,19 @@
 						<p class="date">novembro de 2021 - julho de 2022 · 9 meses</p>
 					</div>
 				</div>
-				<div class="company-container">
-                    <div class="company-title">
-                        <div class="company-logo"><img src="images/uergs-logo.png" alt="UERGS Logo"></div>
-                        Universidade Estadual do Rio Grande do Sul - UERGS
-                    </div>					
+			</div>
+
+			<div class="company-container">
+				<div class="company-title">
+					<div class="company-logo"><img src="images/uergs-logo.png" alt="UERGS Logo"></div>
+					<span>Universidade Estadual do Rio Grande do Sul - UERGS</span>
+					<button class="collapsibleTitulos">
+						<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
+						</svg>
+					</button>
+				</div>
+				<div class="content">
 					<div class="experience-item hidden">
 						<p class="job-title">Desenvolvimento de app - ITAPEVA</p>
 						<p class="date">agosto de 2021 - julho de 2022 · 1 ano</p>
@@ -235,7 +272,9 @@
 					</div>
 				</div>
 			</div>
-		</div>       
+
+			<!-- Adicione mais empresas conforme necessário -->
+		</div>    
         <div class="section skills">
             <h2>Habilidades</h2>
             <ul>
@@ -251,7 +290,15 @@
         </div>
     </div>
     <script>
-        document.querySelectorAll('.collapsible').forEach(button => {
+        document.querySelectorAll('.collapsibleTitulos').forEach(button => {
+			button.addEventListener('click', () => {
+				button.classList.toggle('active');
+				const content = button.parentElement.nextElementSibling;
+				content.classList.toggle('show');
+			});
+		});
+		
+		document.querySelectorAll('.collapsible').forEach(button => {
           button.addEventListener('click', () => {
             button.classList.toggle('active');
             const content = button.nextElementSibling;
