@@ -216,6 +216,46 @@
 		.collapsible:hover {
 			color: #6c757d;
 		}
+		
+		.licenses-container {
+			margin-bottom: 20px;
+		}
+
+		.license-item {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 10px;
+		}
+
+		.license-logo img {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin-right: 15px;
+		}
+
+		.license-details {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.collapsible-license-title {
+			color: #343a40;
+			text-decoration: none;
+			font-weight: bold;
+			transition: color 0.3s ease;
+		}
+
+		.collapsible-license-title:hover {
+			color: #6c757d;
+		}
+
+		.license-date {
+			margin-top: 5px;
+			font-style: italic;
+			color: #6c757d;
+		}
+
     </style>
 </head>
 <body>
@@ -255,7 +295,7 @@
 					<div class="experience-item hidden">
 						<p class="job-title">Desenvolvedor Júnior</p>
                         <p class="date">março de 2023 - o momento · São Leopoldo, Rio Grande do Sul, Brasil</p>
-                        <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação. </p>
+                        <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação. </p>
 					</div>
 					<div class="experience-item hidden">
 						<p class="job-title">Desenvolvedor Trainee</p>
@@ -294,7 +334,51 @@
 
 			<!-- Adicione mais empresas conforme necessário -->
 		</div>    
-        <div class="section skills">
+        
+		<div class="section licenses">
+			<h2>Licenças e Certificados</h2>
+			<div class="licenses-container">
+
+				<!-- Primeira licença -->
+				<div class="license-item">
+					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 1"></div>
+					<div class="license-details">
+						<a href="https://cursos.alura.com.br/certificate/401206ce-d7ce-41c8-bf2d-da1fd59b1b38" target="_blank" class="collapsible-license-title">SQL Server: Consultas avançadas com Microsoft SQL Server 2017</a>
+						<p class="license-date">Verificação emitida em Janeiro de 2022</p>
+					</div>
+				</div>
+
+				<!-- Segunda licença -->
+				<div class="license-item">
+					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 2"></div>
+					<div class="license-details">
+						<a href="https://cursos.alura.com.br/certificate/214c752a-0c6a-411a-97f1-c55889372f91" target="_blank" class="collapsible-license-title">SQL Server: Manipulação de dados com Microsoft SQL Server 2017</a>
+						<p class="license-date">Verificação emitida em Janeiro de 2022</p>
+					</div>
+				</div>
+
+				<!-- Terceira licença -->
+				<div class="license-item">
+					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 3"></div>
+					<div class="license-details">
+						<a href="https://cursos.alura.com.br/certificate/9f145c57-8a92-44ba-a3e6-d277b3aa9fb3" target="_blank" class="collapsible-license-title">SQL Server: T-SQL com Microsoft SQL Server 2017</a>
+						<p class="license-date">Verificação emitida em Janeiro de 2022</p>
+					</div>
+				</div>
+
+				<!-- Quarta licença -->
+				<div class="license-item">
+					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 4"></div>
+					<div class="license-details">
+						<a href="https://cursos.alura.com.br/certificate/155a230c-1fc2-449f-a2a3-83ef4a942397" target="_blank" class="collapsible-license-title">SQL Server: Introdução ao SQL com Microsoft SQL Server 2017</a>
+						<p class="license-date">Verificação emitida em Dezembro de 2021</p>
+					</div>
+				</div>		
+			</div>
+		</div>
+
+		
+		<div class="section skills">
             <h2>Habilidades</h2>
             <ul>
                 <li>SQL Server Management Studio</li>
