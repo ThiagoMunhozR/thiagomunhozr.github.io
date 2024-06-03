@@ -29,16 +29,14 @@
             font-size: 2.5em;
         }
         .header a {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
             background-color: #007BFF;
             color: #fff;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 20px;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
         }
         .header a:hover {
             background-color: #0056b3;
@@ -77,6 +75,9 @@
         }
         .collapsible:hover {
             background-color: #6c757d;
+        }
+        .collapsible.active .icon {
+            transform: rotate(180deg);
         }
         .content {
             display: none;
@@ -141,31 +142,35 @@
         .icon {
             transition: transform 0.2s ease;
         }
-        .collapsible.active .icon {
-            transform: rotate(180deg);
-        }
         .section-shadow {
             box-shadow: 0 -20px 20px -20px rgba(0, 0, 0, 0.2);
         }
         .company-container {
             margin-bottom: 20px;
+            position: relative;
         }
         .company-logo {
             width: 50px;
             height: 50px;
-            background-color: #ccc;
             border-radius: 50%;
+            overflow: hidden;
             display: inline-block;
-            margin-right: 10px;
             vertical-align: middle;
+            margin-right: 10px;
+        }
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .company-title {
             display: inline-block;
             vertical-align: middle;
+            font-weight: bold;
+            font-size: 1.2em;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="header">
@@ -194,36 +199,43 @@
                 </svg>
             </button>
             <div class="content">
-                <div class="experience-item hidden">
-                    <p class="job-title">Desenvolvedor Júnior</p>
-                    <p class="company">GVdasa Inteligência Educacional</p>
-                    <p class="date">mar de 2023 - o momento · São Leopoldo, Rio Grande do Sul, Brasil</p>
-                    <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação.</p>
-                </div>
-                <div class="experience-item hidden">
-                    <p class="job-title">Desenvolvedor Trainee</p>
-                    <p class="company">GVdasa Inteligência Educacional</p>
-                    <p class="date">jul de 2022 - mar de 2023 · 9 meses</p>
-                </div>
-                <div class="experience-item hidden">
-                    <p class="job-title">Estagiário em Programação</p>
-                    <p class="company">GVdasa Inteligência Educacional</p>
-                    <p class="date">nov de 2021 - jul de 2022 · 9 meses</p>
-                </div>
-                <div class="experience-item hidden">
-                    <p class="job-title">Desenvolvimento de app - ITAPEVA</p>
-                    <p class="company">Universidade Estadual do Rio Grande do Sul - UERGS</p>
-                    <p class="date">ago de 2021 - jul de 2022 · 1 ano</p>
-                    <p class="description">Projeto de extensão para desenvolvimento e aprimoramento de um aplicativo para smartphones e a elaboração de um módulo GPS com Arduino sobre o rastreamento de embarcações pesqueiras no litoral do estado.</p>
-                </div>
-                <div class="experience-item hidden">
-                    <p class="job-title">Monitoria Acadêmica</p>
-                    <p class="company">Universidade Estadual do Rio Grande do Sul - UERGS</p>
-                    <p class="date">abr de 2021 - jul de 2021 · 4 meses</p>
-                    <p class="description">Elaboração do programa de atividades em conjunto com o professor da disciplina de Álgebra Linear e Geometria Analítica e auxílio na preparação de material didático e experimental, na orientação de alunos e na realização de trabalhos experimentais.</p>
-                </div>
-            </div>
-        </div>
+                <div class="company-container">
+                    <div class="company-title">
+                        <div class="company-logo"><img src="gvdasa_logo.jpg" alt="GVdasa Logo"></div>
+                        GVdasa Inteligência Educacional
+                    </div>
+                    <div class="experience-item hidden">
+                        <p class="job-title">Desenvolvedor Júnior</p>
+                        <p class="date">mar de 2023 - o momento · São Leopoldo, Rio Grande do Sul, Brasil</p>
+                        <p class="description">Desenvolvedor Delphi Júnior atuando na sustentação e nos projetos para o ERP da Empresa, um sistema de gestão educacional. Responsável por atender chamados, corrigir bugs no ERP e solucionar inconsistências no banco de dados dos clientes utilizando scripts em T-SQL T-SQL. Participo de demandas e projetos, implementando novas funcionalidades e ajustes conforme as exigências dos clientes e do Ministério da Educação. </p>
+					</div>
+					<div class="experience-item hidden">
+						<p class="job-title">Desenvolvedor Trainee</p>
+						<p class="date">jul de 2022 - mar de 2023 · 9 meses</p>
+					</div>
+					<div class="experience-item hidden">
+						<p class="job-title">Estagiário em Programação</p>
+						<p class="date">nov de 2021 - jul de 2022 · 9 meses</p>
+					</div>
+				</div>
+				<div class="company-container">
+                    <div class="company-title">
+                        <div class="company-logo"><img src="uergs-logo.png" alt="UERGS Logo"></div>
+                        Universidade Estadual do Rio Grande do Sul - UERGS
+                    </div>					
+					<div class="experience-item hidden">
+						<p class="job-title">Desenvolvimento de app - ITAPEVA</p>
+						<p class="date">ago de 2021 - jul de 2022 · 1 ano</p>
+						<p class="description">Projeto de extensão para desenvolvimento e aprimoramento de um aplicativo para smartphones e a elaboração de um módulo GPS com Arduino sobre o rastreamento de embarcações pesqueiras no litoral do estado.</p>
+					</div>
+					<div class="experience-item hidden">
+						<p class="job-title">Monitoria Acadêmica</p>
+						<p class="date">abr de 2021 - jul de 2021 · 4 meses</p>
+						<p class="description">Elaboração do programa de atividades em conjunto com o professor da disciplina de Álgebra Linear e Geometria Analítica e auxílio na preparação de material didático e experimental, na orientação de alunos e na realização de trabalhos experimentais.</p>
+					</div>
+				</div>
+			</div>
+		</div>       
         <div class="section skills">
             <h2>Habilidades</h2>
             <ul>
@@ -240,25 +252,26 @@
     </div>
     <script>
         document.querySelectorAll('.collapsible').forEach(button => {
-            button.addEventListener('click', () => {
-                button.classList.toggle('active');
-                const content = button.nextElementSibling;
-                content.classList.toggle('show');
-            });
+          button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            content.classList.toggle('show');
+           });
         });
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    entry.target.classList.remove('hidden');
-                }
+       const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+             if (entry.isIntersecting) {
+                 entry.target.classList.add('show');
+                 entry.target.classList.remove('hidden');
+              }
             });
-        });
+         });
 
-        document.querySelectorAll('.experience-item').forEach(item => {
+         document.querySelectorAll('.experience-item').forEach(item => {
             observer.observe(item);
-        });
+         });
+
     </script>
 </body>
 </html>
