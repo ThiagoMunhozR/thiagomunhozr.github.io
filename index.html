@@ -217,43 +217,73 @@
 			color: #6c757d;
 		}
 		
+		/* Licenças e Certificados */
 		.licenses-container {
 			margin-bottom: 20px;
 		}
-
 		.license-item {
 			display: flex;
 			align-items: flex-start;
 			margin-bottom: 10px;
 		}
-
 		.license-logo img {
 			width: 50px;
 			height: 50px;
 			border-radius: 50%;
 			margin-right: 15px;
 		}
-
 		.license-details {
 			display: flex;
 			flex-direction: column;
 		}
-
 		.collapsible-license-title {
 			color: #343a40;
 			text-decoration: none;
 			font-weight: bold;
 			transition: color 0.3s ease;
 		}
-
 		.collapsible-license-title:hover {
 			color: #6c757d;
 		}
-
 		.license-date {
 			margin-top: 5px;
 			font-style: italic;
 			color: #6c757d;
+		}
+		.expand-licenses-btn {
+			cursor: pointer;
+			border: none;
+			background: none;
+			color: #343a40;
+			font-size: 1em;
+			border-radius: 20px;
+			width: auto;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background-color 0.3s ease;
+			gap: 10px;
+			margin: 0 auto;
+			display: block; 
+			max-width: 300px; 
+			line-height: 40px;
+		}
+		.expand-licenses-btn:hover {
+			background-color: #6c757d;
+			border-radius: 20px;
+		}
+
+		.expand-licenses-btn .icon {
+			transition: transform 0.3s ease;
+			vertical-align: middle;
+		}
+
+		.expand-licenses-btn.active .icon {
+			transform: rotate(180deg);
+		}
+		.hidden-license {
+			display: none;
 		}
 
     </style>
@@ -357,23 +387,29 @@
 					</div>
 				</div>
 
-				<!-- Terceira licença -->
-				<div class="license-item">
-					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 3"></div>
-					<div class="license-details">
-						<a href="https://cursos.alura.com.br/certificate/9f145c57-8a92-44ba-a3e6-d277b3aa9fb3" target="_blank" class="collapsible-license-title">SQL Server: T-SQL com Microsoft SQL Server 2017</a>
-						<p class="license-date">Verificação emitida em Janeiro de 2022</p>
+				<div class="additional-licenses hidden-license">
+					<div class="license-item">
+						<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 3"></div>
+						<div class="license-details">
+							<a href="https://cursos.alura.com.br/certificate/9f145c57-8a92-44ba-a3e6-d277b3aa9fb3" target="_blank" class="collapsible-license-title">SQL Server: T-SQL com Microsoft SQL Server 2017</a>
+							<p class="license-date">Verificação emitida em Janeiro de 2022</p>
+						</div>
+					</div>
+					
+					<div class="license-item">
+						<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 4"></div>
+						<div class="license-details">
+							<a href="https://cursos.alura.com.br/certificate/155a230c-1fc2-449f-a2a3-83ef4a942397" target="_blank" class="collapsible-license-title">SQL Server: Introdução ao SQL com Microsoft SQL Server 2017</a>
+							<p class="license-date">Verificação emitida em Dezembro de 2021</p>
+						</div>
 					</div>
 				</div>
-
-				<!-- Quarta licença -->
-				<div class="license-item">
-					<div class="license-logo"><img src="images/alura_logo.jpg" alt="Licença 4"></div>
-					<div class="license-details">
-						<a href="https://cursos.alura.com.br/certificate/155a230c-1fc2-449f-a2a3-83ef4a942397" target="_blank" class="collapsible-license-title">SQL Server: Introdução ao SQL com Microsoft SQL Server 2017</a>
-						<p class="license-date">Verificação emitida em Dezembro de 2021</p>
-					</div>
-				</div>		
+				<button class="expand-licenses-btn">
+					<span>Exibir todas as licenças/certificados</span>
+					<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 15L8 11H16L12 15Z" fill="currentColor"/>
+					</svg>
+				</button>
 			</div>
 		</div>
 
@@ -426,6 +462,26 @@
          document.querySelectorAll('.experience-item').forEach(item => {
             observer.observe(item);
          });
+		 
+
+		document.addEventListener('DOMContentLoaded', () => {
+		// Expandir licenças/certificados
+			document.querySelector('.expand-licenses-btn').addEventListener('click', function () {
+				const additionalLicenses = document.querySelector('.additional-licenses');
+				const isHidden = additionalLicenses.classList.contains('hidden-license');
+
+				if (isHidden) {
+					additionalLicenses.classList.remove('hidden-license');
+					this.classList.add('active');
+					this.querySelector('span').textContent = 'Minimizar licenças/certificados';
+				} else {
+					additionalLicenses.classList.add('hidden-license');
+					this.classList.remove('active');
+					this.querySelector('span').textContent = 'Exibir todas as licenças/certificados';
+				}
+			});
+		});
+
 
     </script>
 </body>
