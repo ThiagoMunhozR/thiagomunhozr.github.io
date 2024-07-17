@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiago Munhoz Radde</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
+    <style>      
+		body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
@@ -18,15 +18,21 @@
             margin: 0 auto;
             padding: 20px;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
+        
+		/* Cabeçalho */
+		.header {
+            position: relative; /* Define a posição relativa */
+            text-align: center; /* Centraliza o texto */
+            background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%); /* Define o fundo gradiente */
+            color: white; /* Define a cor do texto */
+			padding-top: 50px; 
         }
         .header h1 {
-            margin: 0;
-            color: #007BFF;
-            font-size: 2.5em;
+            font-family: 'Roboto', sans-serif; 
+            font-weight: 700; /* Define o peso da fonte */
+            letter-spacing: 2px; /* Define o espaçamento entre letras */
+            font-size: 48px; /* Define o tamanho da fonte */
+			margin-bottom: 5px; /* Reduz a margem inferior do título */
         }
         .header a {
             background-color: #007BFF;
@@ -41,6 +47,109 @@
         .header a:hover {
             background-color: #0056b3;
         }
+		.inner-header {
+            height: 30vh; /* Define a altura em 30% da altura da tela */
+            width: 100%; /* Define a largura em 100% */
+            margin: 0; /* Remove a margem */
+            padding: 0; /* Remove o padding */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+        }
+		.linkedin-button {
+			margin-top: 5px; /* Espaçamento acima do botão do LinkedIn */
+		}
+        
+		/* Logo */
+		.logo-and-title {
+			display: flex;
+			align-items: center; /* Alinha itens verticalmente */
+		}
+		.logo {
+            width: 50px; /* Define a largura do logo */
+            fill: white; /* Define a cor de preenchimento do logo */
+            padding-right: 15px; /* Define o padding à direita do logo */
+            display: inline-block; /* Define o display como inline-block */
+            vertical-align: middle; /* Alinha verticalmente no meio */
+			margin-right: 10px;
+        }
+		.flex {
+            /* Flexbox para containers */
+            display: flex; /* Define o display como flex */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            text-align: center; /* Centraliza o texto */
+        }
+		.waves {
+            position: relative; /* Define a posição relativa */
+            width: 100%; /* Define a largura em 100% */
+            height: 15vh; /* Define a altura em 15% da altura da tela */
+            margin-bottom: -7px; /* Corrige o gap no Safari */
+            min-height: 100px; /* Define a altura mínima */
+            max-height: 150px; /* Define a altura máxima */
+        }
+        .waves::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.svgrepo.com/show/474165/blue-wave-pattern.svg') repeat-x;
+            animation: wave-animation 4s linear infinite;
+        }
+        
+		/* Animação das ondas */
+		@keyframes wave-animation {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; /* Define a animação para mover infinitamente */
+        }
+
+        .parallax > use:nth-child(1) {
+            animation-delay: -2s; /* Define o atraso da animação */
+            animation-duration: 7s; /* Define a duração da animação */
+        }
+
+        .parallax > use:nth-child(2) {
+            animation-delay: -3s; /* Define o atraso da animação */
+            animation-duration: 10s; /* Define a duração da animação */
+        }
+
+        .parallax > use:nth-child(3) {
+            animation-delay: -4s; /* Define o atraso da animação */
+            animation-duration: 13s; /* Define a duração da animação */
+        }
+
+        .parallax > use:nth-child(4) {
+            animation-delay: -5s; /* Define o atraso da animação */
+            animation-duration: 20s; /* Define a duração da animação */
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0); /* Define o ponto inicial da animação */
+            }
+            100% { 
+                transform: translate3d(85px, 0, 0); /* Define o ponto final da animação */
+            }
+        }
+
+        /* Ajustes para dispositivos móveis */
+        @media (max-width: 768px) {
+            .waves {
+                height: 40px; /* Define a altura das ondas */
+                min-height: 40px; /* Define a altura mínima */
+            }
+            .content {
+                height: 30vh; /* Define a altura do conteúdo */
+            }
+            h1 {
+                font-size: 24px; /* Define o tamanho da fonte */
+            }
+        }
+		
         .section {
             background-color: #fff;
             margin-bottom: 20px;
@@ -79,40 +188,37 @@
         .collapsible.active .icon {
             transform: rotate(180deg);
         }
-		.collapsibleBotaoEXP {
-			cursor: pointer;
-			border: none;
-			background: none;
-			color: #343a40;
-			font-size: 1em;
-			border-radius: 50%;
-			width: 40px;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: background-color 0.3s ease;
-			bottom: 20px;
-			right: 20px;
-			z-index: 1; /* Adicionamos z-index para garantir que os botões estejam sempre na frente */
-		}
-
-		.collapsibleBotaoEXP:hover {
-			background-color: #6c757d;
-		}
-
-		.collapsibleBotaoEXP.active .icon {
-			transform: rotate(180deg);
-		}
-		.collapsible-title {
-			cursor: pointer;
-			color: #343a40;
-			transition: color 0.3s ease;
-		}
-
-		.collapsible-title:hover {
-			color: #6c757d;
-		}
+        .collapsibleBotaoEXP {
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #343a40;
+            font-size: 1em;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1;
+        }
+        .collapsibleBotaoEXP:hover {
+            background-color: #6c757d;
+        }
+        .collapsibleBotaoEXP.active .icon {
+            transform: rotate(180deg);
+        }
+        .collapsible-title {
+            cursor: pointer;
+            color: #343a40;
+            transition: color 0.3s ease;
+        }
+        .collapsible-title:hover {
+            color: #6c757d;
+        }
         .content {
             display: none;
             overflow: hidden;
@@ -145,7 +251,9 @@
         .company, .date {
             color: #6c757d;
         }
-        .skills ul {
+        
+		/* Habilidades */
+		.skills ul {
             list-style-type: none;
             padding: 0;
         }
@@ -198,103 +306,141 @@
             object-fit: cover;
         }
         .company-title {
-			display: inline-block;
+            display: inline-block;
             vertical-align: middle;
             font-weight: bold;
             font-size: 1.2em;
-			display: flex;
-			align-items: center;
-		}
-
-		.collapsible-title {
-			cursor: pointer;
-			color: #343a40;
-			transition: color 0.3s ease;
-			margin-left: 10px;
-		}
-		.collapsible-title:hover,
-		.collapsible:hover {
-			color: #6c757d;
-		}
-		
+            display: flex;
+            align-items: center;
+        }
+        .collapsible-title {
+            cursor: pointer;
+            color: #343a40;
+            transition: color 0.3s ease;
+            margin-left: 10px;
+        }
+        .collapsible-title:hover,
+        .collapsible:hover {
+            color: #6c757d;
+        }
+        
 		/* Licenças e Certificados */
 		.licenses-container {
-			margin-bottom: 20px;
-		}
-		.license-item {
-			display: flex;
-			align-items: flex-start;
-			margin-bottom: 10px;
-		}
-		.license-logo img {
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			margin-right: 15px;
-		}
-		.license-details {
-			display: flex;
-			flex-direction: column;
-		}
-		.collapsible-license-title {
-			color: #343a40;
-			text-decoration: none;
-			font-weight: bold;
-			transition: color 0.3s ease;
-		}
-		.collapsible-license-title:hover {
-			color: #6c757d;
-		}
-		.license-date {
-			margin-top: 5px;
-			font-style: italic;
-			color: #6c757d;
-		}
-		.expand-licenses-btn {
-			cursor: pointer;
-			border: none;
-			background: none;
-			color: #343a40;
-			font-size: 1em;
-			border-radius: 20px;
-			width: auto;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: background-color 0.3s ease;
-			gap: 10px;
-			margin: 0 auto;
-			display: block; 
-			max-width: 300px; 
-			line-height: 40px;
-		}
-		.expand-licenses-btn:hover {
-			background-color: #6c757d;
-			border-radius: 20px;
-		}
-
-		.expand-licenses-btn .icon {
-			transition: transform 0.3s ease;
-			vertical-align: middle;
-		}
-
-		.expand-licenses-btn.active .icon {
-			transform: rotate(180deg);
-		}
-		.hidden-license {
-			display: none;
-		}
-
+            margin-bottom: 20px;
+        }
+        .license-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .license-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .license-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .collapsible-license-title {
+            color: #343a40;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .collapsible-license-title:hover {
+            color: #6c757d;
+        }
+        .license-date {
+            margin-top: 5px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        .expand-licenses-btn {
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: #343a40;
+            font-size: 1em;
+            border-radius: 20px;
+            width: auto;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            gap: 10px;
+            margin: 0 auto;
+            display: block;
+            max-width: 300px;
+            line-height: 40px;
+        }
+        .expand-licenses-btn:hover {
+            background-color: #6c757d;
+            border-radius: 20px;
+        }
+        .expand-licenses-btn .icon {
+            transition: transform 0.3s ease;
+            vertical-align: middle;
+        }
+        .expand-licenses-btn.active .icon {
+            transform: rotate(180deg);
+        }
+        .hidden-license {
+            display: none;
+        }
+		
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Thiago Munhoz Radde</h1>
-            <a href="https://www.linkedin.com/in/ThiagoMunhozR" target="_blank">LinkedIn</a>
+    <div class="header">
+        <!-- Conteúdo antes das ondas -->
+        <div class="inner-header">
+            <!-- Apenas o logo.. Não se preocupe com isso -->
+            <div class="logo-and-title">
+				<!--
+				<svg version="1.1" class="logo" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+					<path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+					<g>
+						<path fill="#fff"
+							d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+							C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+							c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7
+							c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2
+							c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
+					</g>
+				</svg> -->
+				<h1>Thiago Munhoz Radde</h1>
+			</div>
+			<!-- Botão do LinkedIn -->
+			<div class="linkedin-button">
+				<a href="https://www.linkedin.com/in/ThiagoMunhozR" target="_blank">LinkedIn</a>
+			</div>
+			
         </div>
-        <div class="section">
+        <!-- Container das ondas -->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!-- Fim das ondas -->
+    </div>
+    <!-- Fim do cabeçalho -->
+	<div class="container">
+	
+	 <div class="section">
             <h2>Sobre</h2>
             <p>Olá! Meu nome é Thiago, atualmente, ocupo o cargo de Desenvolvedor Júnior na GVdasa Inteligência Educacional, enquanto curso Análise e Desenvolvimento de Sistemas na Ulbra. Meu interesse por desafios e busca constante por aprimoramento são pilares que impulsionam minha carreira.</p>
             <button class="collapsible">
