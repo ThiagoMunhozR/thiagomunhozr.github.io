@@ -1,0 +1,121 @@
+/* Menu Estilo */
+.menu {
+	position: fixed;
+	top: 0;
+	left: -400px; /* Inicialmente fora da tela */
+	width: 250px;
+	height: 100%;
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	transition: left 0.3s;
+	z-index: 1000;
+	max-height: 100%; /* Defina uma altura máxima para o menu */
+	overflow-y: auto; /* Adiciona rolagem vertical quando o conteúdo excede a altura */
+	padding: 15px; /* Adiciona um pouco de preenchimento ao redor do conteúdo */
+	border: 1px solid #333; /* Adiciona uma borda ao redor do menu para visualização */
+	border-radius: 5px; /* Adiciona bordas arredondadas ao menu */
+}	
+	
+.menu-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #555;     
+			color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001; /* Above other content */
+        }
+		
+.menu-btn:hover {
+	background-color: #777;			
+}
+
+.menu::-webkit-scrollbar {
+	width: 10px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+	background-color: #555; /* Cor do polegar da barra de rolagem */
+	border-radius: 5px; /* Borda arredondada do polegar */
+}
+
+.menu::-webkit-scrollbar-track {
+	background-color: #333; /* Cor da faixa da barra de rolagem */
+	border-radius: 5px; /* Borda arredondada da faixa */
+}
+
+.menu.open {
+	left: 0; /* Menu visível */
+}
+.menu h2:first-of-type {
+	margin-top: 40px; /* Adiciona um espaçamento inferior maior */
+}
+
+.menu h2 {
+	margin-top: 10px; /* Adiciona um espaçamento inferior menor */
+}
+
+.menu .stats {
+	background-color: #444;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.menu .stats div {
+	margin-bottom: 10px;
+}
+
+.menu label {
+	color: white;
+}
+
+/* Estilos para os filtros */
+.menu .filters label {
+	margin-bottom: 20px; /* Adiciona espaçamento inferior de 20px aos labels dos filtros */
+}
+
+/* Estilos para as estatísticas */
+.menu .stats label {
+	margin-bottom: 10px; /* Adiciona espaçamento inferior de 10px aos labels das estatísticas */
+}
+
+/* Estilos gerais para os filtros e estatísticas */
+.menu .filters input[type="checkbox"] {
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+.menu .filters select {
+	background-color: #444;
+	color: #fff;
+	padding: 5px;
+	border: 1px solid #333;
+	border-radius: 5px;
+}
+
+.menu select,
+.menu .sort-select {
+	background-color: #444;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 1em;
+	width: 100%;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.menu select option,
+.menu .sort-select option {
+	background-color: #444;
+	color: white;
+}
+
+.menu .sort-select {
+	margin-top: 10px;
+}

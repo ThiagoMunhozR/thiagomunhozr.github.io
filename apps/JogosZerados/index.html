@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Zerados</title>
+    
+	<link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/games.css">
+    <link rel="stylesheet" href="styles/menu.css">
+	<link rel="stylesheet" href="styles/popup.css">
+
+</head>
+<body>
+
+    <header>
+        <h1>Jogos Zerados</h1>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="file-input">
+		<button class="file-input-btn" onclick="openPopup()">Adicionar jogo</button>
+	</div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar jogo..." onkeyup="searchGame()">
+    </div>
+
+    <div id="gamesList">
+        <!-- Conteúdo gerado dinamicamente -->
+    </div>
+
+    <div id="errorMessage" class="error-message">
+        <!-- Mensagens de erro aparecerão aqui -->
+    </div>
+
+    <div id="menu" class="menu">
+		<h2>Filtros:</h2>
+		<div class="filters">
+			<div>
+				<input type="checkbox" id="groupByYear" onchange="toggleGrouping()">
+				<label for="groupByYear">Agrupar por ano</label>
+			</div>
+			<div>
+				<label for="sortBy">Ordenar por:</label>
+				<select id="sortBy" onchange="updateSorting()">
+					<option value="date" selected>Data</option>
+					<option value="alphabetical">Alfabético</option>
+				</select>
+			</div>
+			<div>
+				<label for="sortDirection">Direção:</label>
+				<select id="sortDirection" onchange="updateSorting()">
+					<option value="desc" selected>Decrescente</option>
+					<option value="asc">Crescente</option>
+				</select>
+			</div>
+		</div>
+        <h2>Estatísticas:</h2>
+        <div class="stats">
+            <div id="totalGames">✅ Jogos zerados: 0</div>
+            <div id="totalCompletedGames">🏆 Jogos 100%: 0</div>
+            <div id="gamesByYear">🏁 Top-3 anos com mais jogos:</div>
+        </div>
+		<div>
+			<div class="file-input">
+				<label for="fileInput">Importar arquivo JSON</label>
+				<input type="file" id="fileInput" accept=".json" onchange="loadFile()">
+			</div>
+			<div class="file-input">
+				<button class="file-input-btn" onclick="downloadBackup()">Baixar Backup JSON</button>
+			</div>
+		</div>
+    </div>
+	
+	<!-- Popup para adicionar jogo -->
+	<!-- Fundo escurecido atrás do popup -->
+	<div id="popupOverlay" class="popup-overlay" style="display: none;"></div>
+
+	<!-- Contêiner do popup -->
+	<div id="popup" class="popup" style="display: none;">
+		<h2>Adicionar Jogo</h2>
+		<form id="gameForm">
+			<label for="gameName">Nome:</label>
+			<input type="text" id="gameName" name="gameName" required>
+
+			<label for="gameDate">Data:</label>
+			<input type="date" id="gameDate" name="gameDate" required>
+
+			<label for="completionDate">Data 100%:</label>
+			<input type="date" id="completionDate" name="completionDate">
+
+			<div>
+				<button type="button" onclick="saveGame()">Salvar</button>
+				<button type="button" onclick="closePopup()">Cancelar</button>
+			</div>
+		</form>
+	</div>
+    
+	<script src="scripts/ManipulaJson.js"></script>
+    <script src="scripts/CalculaEstatisticas.js"></script>
+	<script src="scripts/PreencherJogos.js"></script>
+    <script src="scripts/PesquisarJogos.js"></script>
+	<script src="scripts/Utilitarios.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,91 @@
+.game-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.game {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 10px;
+	width: calc(50% - 20px);
+	box-sizing: border-box;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+	cursor: pointer;
+	color: #333;
+}
+
+.game:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game img {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.game-title {
+	font-size: 1.1em;
+	margin: 10px 0 5px;
+}
+
+.game-date {
+	color: #666;
+}
+
+.trophy {
+	color: #FFD700; /* Dourado escuro */
+}
+
+@media (min-width: 600px) {
+	.game {
+		width: calc(25% - 20px);
+	}
+}
+
+.year-section {
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.year-header {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	background-color: #107C10; /* Cor de fundo para destaque */
+	color: white; /* Cor do texto */
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #107C10; /* Cor da borda igual ao fundo para menos contraste */
+	margin-bottom: 10px;
+	font-size: 1.2em; /* Tamanho da fonte do ano */
+}
+
+.year-header h2 {
+	margin: 0; /* Remove margem do título */
+	flex: 1; /* Preenche o espaço disponível */
+}
+
+.year-header .year-games {
+	font-size: 0.9em; /* Fonte menor para a quantidade de jogos zerados */
+	color: #e0e0e0; /* Cor de texto mais clara para menos destaque */
+}
+
+.year-toggle {
+	font-size: 1.2em;
+	margin-right: 10px;
+}
+
+.year-content {
+	display: block;
+	padding: 10px;
+}
+
+.year-content.hidden {
+	display: none;
+}
