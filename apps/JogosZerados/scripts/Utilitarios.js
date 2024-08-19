@@ -1,5 +1,6 @@
 //ABRIR E FECHAR POPUP
 function openPopup() {
+	closeMenu(); // Fecha o menu, caso esteja aberto
 	document.getElementById('popup').style.display = 'block';
 	document.getElementById('popupOverlay').style.display = 'block';
 }
@@ -7,6 +8,18 @@ function openPopup() {
 function closePopup() {
 	document.getElementById('popup').style.display = 'none';
 	document.getElementById('popupOverlay').style.display = 'none';
+}
+
+//ABRIR E FECHAR POPUP DE AJUDA
+function openHelpPopup() {
+    closeMenu(); // Fecha o menu, caso esteja aberto
+    document.getElementById('helpPopup').style.display = 'block';
+    document.getElementById('helpPopupOverlay').style.display = 'block';
+}
+
+function closeHelpPopup() {
+    document.getElementById('helpPopup').style.display = 'none';
+    document.getElementById('helpPopupOverlay').style.display = 'none';
 }
 
 function formatDateToDDMMYYYY(date) {
@@ -46,4 +59,9 @@ function sanitizeFilename(filename) {
 function toggleMenu() {
 	const menu = document.getElementById('menu');
 	menu.classList.toggle('open');
+}
+
+function closeMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.remove('open');
 }

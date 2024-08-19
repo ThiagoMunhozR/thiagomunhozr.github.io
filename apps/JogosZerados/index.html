@@ -64,6 +64,11 @@
         </div>
 		<div>
 			<div class="file-input">
+				<button class="file-input-btn" onclick="openHelpPopup()">
+					<span>&#x2754;</span> Ajuda
+				</button>
+			</div>
+			<div class="file-input">
 				<label for="fileInput">Importar arquivo JSON</label>
 				<input type="file" id="fileInput" accept=".json" onchange="loadFile()">
 			</div>
@@ -95,6 +100,27 @@
 				<button type="button" onclick="closePopup()">Cancelar</button>
 			</div>
 		</form>
+	</div>
+	
+	<!-- Popup para ajuda -->
+	<div id="helpPopupOverlay" class="popup-overlay" style="display: none;"></div>
+
+	<div id="helpPopup" class="popup" style="display: none;">
+		<h2>Ajuda</h2>
+		<div>
+			<p>O botão <strong>Importar</strong> permite que você selecione um arquivo JSON para carregar sua lista de jogos zerados. Certifique-se de que o arquivo JSON esteja no formato correto.</p>
+			<p>O botão <strong>Baixar Backup JSON</strong> permite que você faça o download dos seus jogos zerados que estão no site em formato JSON.</p>
+			<p>Você pode criar seu próprio arquivo JSON para importar. Aqui está um exemplo de como criar escrever em um documento de texto, e depois basta salvar como NomeDoArquivo.json:</p>
+			<pre style="white-space: pre-wrap;">
+	[
+		{"DATA": "01/01/2024", "JOGO": "Nome do Jogo #1", "COMPLETO": "01/01/2024"},
+		{"DATA": "01/01/2024", "JOGO": "Nome do Jogo #2", "COMPLETO": ""}
+	]
+			</pre>
+		</div>
+		<div>
+			<button type="button" onclick="closeHelpPopup()">Fechar</button>
+		</div>
 	</div>
     
 	<script src="scripts/ManipulaJson.js"></script>
