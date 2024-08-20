@@ -119,3 +119,14 @@
 .menu .sort-select {
 	margin-top: 10px;
 }
+
+/* Estilo para o tamanho do armazenamento */
+.storage-info {
+    margin-top: 10px;
+    margin-bottom: 30px; /* Adiciona um recuo no final do menu */
+    font-size: 0.7em; /* Fonte menor, ajustável conforme necessário */
+    color: #888; /* Cor discreta */
+    text-align: center; /* Centraliza o texto */
+    width: 100%; /* Garante que o texto use toda a largura disponível */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+}

@@ -65,3 +65,19 @@ function closeMenu() {
     const menu = document.getElementById('menu');
     menu.classList.remove('open');
 }
+
+//CALCULA STORAGE
+function updateStorageSize() {
+    let totalSize = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        totalSize += key.length + value.length;
+    }
+
+    const sizeInKB = (totalSize / 1024).toFixed(2);
+    document.getElementById('storageSize').textContent = `Tamanho do armazenamento: ${sizeInKB} KB`;
+}
+
+// Atualiza o tamanho do armazenamento ao carregar a página
+document.addEventListener('DOMContentLoaded', updateStorageSize);

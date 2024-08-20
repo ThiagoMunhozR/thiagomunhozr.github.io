@@ -1,3 +1,6 @@
+const API_KEY = 'AIzaSyACoU7hi3vil4_TADNJ9sx7nLCoK5EcF0s'; // Substitua pela sua chave de API
+const CSE_ID = '54c26a2ff4e11419e'; // Substitua pelo seu ID do motor de busca
+
 function toggleGrouping() {
 	parseAndDisplayGames(); // Recarrega os jogos com base no estado atual do checkbox
 }
@@ -70,8 +73,18 @@ function parseAndDisplayGames() {
 				gameDiv.dataset.title = game.JOGO;
 
 				const img = document.createElement('img');
-				img.src = `imagens/${sanitizeFilename(game.JOGO)}.jpg`;
-				img.alt = game.JOGO;
+                img.src = `imagens/${sanitizeFilename(game.JOGO)}.jpg`;
+                img.alt = game.JOGO;
+
+                img.onerror = async function() {
+                    try {
+                        const imageUrl = await fetchImageFromGoogle(game.JOGO);
+                        img.src = imageUrl;
+                    } catch (error) {
+                        console.error('Erro ao buscar imagem no Google:', error);
+                        img.alt = 'Imagem não encontrada';
+                    }
+                };
 
 				const gameTitle = document.createElement('div');
 				gameTitle.classList.add('game-title');
@@ -108,10 +121,20 @@ function parseAndDisplayGames() {
 			const gameDiv = document.createElement('div');
 			gameDiv.classList.add('game');
 			gameDiv.dataset.title = game.JOGO;
-
+			
 			const img = document.createElement('img');
-			img.src = `imagens/${sanitizeFilename(game.JOGO)}.jpg`;
-			img.alt = game.JOGO;
+                img.src = `imagens/${sanitizeFilename(game.JOGO)}.jpg`;
+                img.alt = game.JOGO;
+
+                img.onerror = async function() {
+                    try {
+                        const imageUrl = await fetchImageFromGoogle(game.JOGO);
+                        img.src = imageUrl;
+                    } catch (error) {
+                        console.error('Erro ao buscar imagem no Google:', error);
+                        img.alt = 'Imagem não encontrada';
+                    }
+                };
 
 			const gameTitle = document.createElement('div');
 			gameTitle.classList.add('game-title');
@@ -133,3 +156,82 @@ function parseAndDisplayGames() {
 	
 	updateStatistics(); // Atualiza as estatísticas após exibir os jogos
 }
+
+// CARREGAR IMAGENS EM CACHE E DEPOIS FAZ REQUISIÇÃO
+async function fetchImageFromGoogle(query) {
+    const imageKey = encodeURIComponent(query);
+    const cachedImage = localStorage.getItem(imageKey);
+
+    if (cachedImage) {
+        console.log('Imagem encontrada no cache:', cachedImage);
+        return cachedImage;
+    } else {
+        const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}+GAME+COVER+ART&cx=${CSE_ID}&searchType=image&key=${API_KEY}&num=10&imgSize=large`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.items && data.items.length > 0) {
+            console.log('Imagens encontradas:', data.items);
+            
+            // Itera sobre as imagens disponíveis
+            for (const item of data.items) {
+                try {
+                    // Verifica se a imagem é retrato (altura > largura)
+                    if (item.image.height > item.image.width) {
+                        console.log('Imagem retrato encontrada:', item);
+                        const imageUrl = item.link;
+                        const compressedImage = await compressImage(imageUrl);
+                        localStorage.setItem(imageKey, compressedImage);
+                        return compressedImage;
+                    }
+                } catch (error) {
+                    console.error('Erro ao processar a imagem:', error);
+                    // Continua para a próxima imagem
+                }
+            }
+
+            // Se nenhuma imagem foi processada com sucesso
+            throw new Error('Nenhuma imagem retrato encontrada ou erro ao processar todas as imagens');
+        } else {
+            throw new Error('Nenhuma imagem encontrada');
+        }
+    }
+}
+
+// COMPRIMIR IMAGENS
+function compressImage(imageUrl) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "Anonymous"; 
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const MAX_WIDTH = 800; 
+                    const MAX_HEIGHT = 800; 
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.4);
+                    resolve(dataUrl);
+                };
+
+                img.onerror = reject;
+                img.src = imageUrl;
+            }); 
+        }
