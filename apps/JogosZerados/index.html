@@ -89,8 +89,11 @@
 	<div id="popup" class="popup" style="display: none;">
 		<h2>Adicionar Jogo</h2>
 		<form id="gameForm">
-			<label for="gameName">Nome:</label>
-			<input type="text" id="gameName" name="gameName" required>
+			<div style="position: relative;">
+				<label for="gameName">Nome:</label>
+				<input type="text" id="gameName" name="gameName" required>
+				<ul id="suggestions" class="suggestions-list"></ul>
+			</div>
 
 			<label for="gameDate">Data:</label>
 			<input type="date" id="gameDate" name="gameDate" required>
@@ -104,6 +107,7 @@
 			</div>
 		</form>
 	</div>
+
 	
 	<!-- Popup para ajuda -->
 	<div id="helpPopupOverlay" class="popup-overlay" style="display: none;"></div>
@@ -131,6 +135,7 @@
 	<script src="scripts/PreencherJogos.js"></script>
     <script src="scripts/PesquisarJogos.js"></script>
 	<script src="scripts/Utilitarios.js"></script>
+	<script src="scripts/image_names.js"></script>
 	
 </body>
 </html>
