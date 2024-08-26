@@ -43,45 +43,6 @@ function formatDateForInput(dateStr) {
     return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 }
 
-function saveEditedGame(game) {
-    game.JOGO = document.getElementById('gameName').value;
-    game.DATA = formatDateFromInput(document.getElementById('gameDate').value);
-    game.COMPLETO = document.getElementById('completionDate').value ? formatDateFromInput(document.getElementById('completionDate').value) : '';
-
-    // Atualiza o localStorage
-    localStorage.setItem('gamesData', JSON.stringify(gamesData));
-
-    // Fecha o popup e atualiza a exibição dos jogos
-    closePopup();
-    parseAndDisplayGames();
-}
-
-function formatDateFromInput(dateStr) {
-    const [year, month, day] = dateStr.split('-');
-    return `${day}/${month}/${year}`;
-}
-
-//DELETAR JOGO
-function deleteGame() {
-    if (confirm('Tem certeza de que deseja excluir este jogo?')) {
-        const gameName = document.getElementById('gameName').value;
-        const game = gamesData.find(g => g.JOGO === gameName);
-        if (game) {
-            removeGame(game);
-        }
-        closePopup(); // Fechar o popup após a exclusão
-    }
-}
-
-function removeGame(game) {
-    const gameIndex = gamesData.findIndex(g => g.JOGO === game.JOGO);
-    if (gameIndex > -1) {
-        gamesData.splice(gameIndex, 1); // Remove do array
-        localStorage.setItem('gamesData', JSON.stringify(gamesData)); // Atualiza o localStorage
-        parseAndDisplayGames(); // Re-renderiza os jogos
-    }
-}
-
 //ABRIR E FECHAR POPUP DE AJUDA
 function openHelpPopup() {
     closeMenu(); // Fecha o menu, caso esteja aberto
