@@ -1,13 +1,85 @@
 //ABRIR E FECHAR POPUP
 function openPopup() {
+	//APENAS PARA ADICIONAR O JOGO
 	closeMenu(); // Fecha o menu, caso esteja aberto
 	document.getElementById('popup').style.display = 'block';
 	document.getElementById('popupOverlay').style.display = 'block';
+	document.getElementById('deleteButton').style.display = 'none'; // Oculta o botão Excluir
+	
+	// Define a ação do botão "Salvar" para adicionar o jogo
+	document.getElementById('saveButton').onclick = () => saveGame();
 }
 
 function closePopup() {
 	document.getElementById('popup').style.display = 'none';
 	document.getElementById('popupOverlay').style.display = 'none';
+	document.getElementById('gameForm').reset();
+	// Reverte o título do popup para "Adicionar Jogo" para a próxima vez
+    document.getElementById('popupTitle').textContent = 'Adicionar Jogo';
+}
+
+function openEditPopup(game) {
+	if (confirm('Tem certeza de que deseja editar este jogo?')) {
+		// Atualiza o título do popup para "Editar Jogo"
+		document.getElementById('popupTitle').textContent = 'Editar Jogo';
+
+		// Preenche os campos do formulário com os dados do jogo
+		document.getElementById('gameName').value = game.JOGO;
+		document.getElementById('gameDate').value = formatDateForInput(game.DATA);
+		document.getElementById('completionDate').value = game.COMPLETO ? formatDateForInput(game.COMPLETO) : '';
+		document.getElementById('deleteButton').style.display = 'inline'; // Exibe o botão Excluir
+
+		// Define a ação do botão "Salvar" para atualizar o jogo existente
+		document.getElementById('saveButton').onclick = () => saveEditedGame(game);
+
+		// Exibe o popup
+		document.getElementById('popup').style.display = 'block';
+		document.getElementById('popupOverlay').style.display = 'block';
+    }	
+}
+
+function formatDateForInput(dateStr) {
+    const [day, month, year] = dateStr.split('/');
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
+
+function saveEditedGame(game) {
+    game.JOGO = document.getElementById('gameName').value;
+    game.DATA = formatDateFromInput(document.getElementById('gameDate').value);
+    game.COMPLETO = document.getElementById('completionDate').value ? formatDateFromInput(document.getElementById('completionDate').value) : '';
+
+    // Atualiza o localStorage
+    localStorage.setItem('gamesData', JSON.stringify(gamesData));
+
+    // Fecha o popup e atualiza a exibição dos jogos
+    closePopup();
+    parseAndDisplayGames();
+}
+
+function formatDateFromInput(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+}
+
+//DELETAR JOGO
+function deleteGame() {
+    if (confirm('Tem certeza de que deseja excluir este jogo?')) {
+        const gameName = document.getElementById('gameName').value;
+        const game = gamesData.find(g => g.JOGO === gameName);
+        if (game) {
+            removeGame(game);
+        }
+        closePopup(); // Fechar o popup após a exclusão
+    }
+}
+
+function removeGame(game) {
+    const gameIndex = gamesData.findIndex(g => g.JOGO === game.JOGO);
+    if (gameIndex > -1) {
+        gamesData.splice(gameIndex, 1); // Remove do array
+        localStorage.setItem('gamesData', JSON.stringify(gamesData)); // Atualiza o localStorage
+        parseAndDisplayGames(); // Re-renderiza os jogos
+    }
 }
 
 //ABRIR E FECHAR POPUP DE AJUDA
@@ -50,12 +122,6 @@ function formatDate(dateStr) {
 	return `${day}/${month}/${year}`;
 }
 
-function sanitizeFilename(filename) {
-	return filename
-		.replace(/:/g, '') // Remove os dois pontos
-		.replace(/[\/\*\?\"<>\|]/g, '') // Remove outros caracteres inválidos
-}
-
 function toggleMenu() {
 	const menu = document.getElementById('menu');
 	menu.classList.toggle('open');
@@ -64,6 +130,13 @@ function toggleMenu() {
 function closeMenu() {
     const menu = document.getElementById('menu');
     menu.classList.remove('open');
+}
+
+// REMOVE CARACTERES ESPECIAIS
+function sanitizeFilename(filename) {
+	return filename
+		.replace(/:/g, '') // Remove os dois pontos
+		.replace(/[\/\*\?\"<>\|]/g, '') // Remove outros caracteres inválidos
 }
 
 //CALCULA STORAGE
