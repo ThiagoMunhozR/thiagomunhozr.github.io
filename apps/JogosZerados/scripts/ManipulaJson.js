@@ -71,14 +71,18 @@ function formatDateFromInput(dateStr) {
 
 //DELETAR JOGO
 function deleteGame() {
-    if (confirm('Tem certeza de que deseja excluir este jogo?')) {
-        const gameName = document.getElementById('gameName').value;
-        const game = gamesData.find(g => g.JOGO === gameName);
-        if (game) {
-            removeGame(game);
-        }
-        closePopup(); // Fechar o popup após a exclusão
-    }
+    Ext.onReady(function(){
+        Ext.MessageBox.confirm('Excluir Jogo', 'Tem certeza de que deseja excluir este jogo?', function(btn) {
+            if (btn === 'yes') {
+                const gameName = document.getElementById('gameName').value;
+                const game = gamesData.find(g => g.JOGO === gameName);
+                if (game) {
+                    removeGame(game); // Função para remover o jogo
+                }
+                closePopup(); // Fechar o popup após a exclusão
+            }
+        });
+    });
 }
 
 function removeGame(game) {

@@ -19,23 +19,27 @@ function closePopup() {
 }
 
 function openEditPopup(game) {
-	if (confirm('Tem certeza de que deseja editar este jogo?')) {
-		// Atualiza o título do popup para "Editar Jogo"
-		document.getElementById('popupTitle').textContent = 'Editar Jogo';
+	Ext.onReady(function(){
+        Ext.MessageBox.confirm('Editar Jogo', 'Tem certeza de que deseja editar este jogo?', function(btn) {
+            if (btn === 'yes') {
+                // Atualiza o título do popup para "Editar Jogo"
+				document.getElementById('popupTitle').textContent = 'Editar Jogo';
 
-		// Preenche os campos do formulário com os dados do jogo
-		document.getElementById('gameName').value = game.JOGO;
-		document.getElementById('gameDate').value = formatDateForInput(game.DATA);
-		document.getElementById('completionDate').value = game.COMPLETO ? formatDateForInput(game.COMPLETO) : '';
-		document.getElementById('deleteButton').style.display = 'inline'; // Exibe o botão Excluir
+				// Preenche os campos do formulário com os dados do jogo
+				document.getElementById('gameName').value = game.JOGO;
+				document.getElementById('gameDate').value = formatDateForInput(game.DATA);
+				document.getElementById('completionDate').value = game.COMPLETO ? formatDateForInput(game.COMPLETO) : '';
+				document.getElementById('deleteButton').style.display = 'inline'; // Exibe o botão Excluir
 
-		// Define a ação do botão "Salvar" para atualizar o jogo existente
-		document.getElementById('saveButton').onclick = () => saveEditedGame(game);
+				// Define a ação do botão "Salvar" para atualizar o jogo existente
+				document.getElementById('saveButton').onclick = () => saveEditedGame(game);
 
-		// Exibe o popup
-		document.getElementById('popup').style.display = 'block';
-		document.getElementById('popupOverlay').style.display = 'block';
-    }	
+				// Exibe o popup
+				document.getElementById('popup').style.display = 'block';
+				document.getElementById('popupOverlay').style.display = 'block';
+			}
+        });
+    });
 }
 
 function formatDateForInput(dateStr) {
