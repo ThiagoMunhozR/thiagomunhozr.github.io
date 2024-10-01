@@ -51,6 +51,10 @@
     display: block; /* Faz com que o rótulo ocupe toda a largura disponível */
 }
 
+.popup h2 {
+	color: #fff; /* Cor do texto */
+}
+
 .popup input, .popup select {
     width: calc(100% - 20px); /* Ajusta a largura dos campos */
     padding: 10px; /* Espaçamento interno dos campos */
