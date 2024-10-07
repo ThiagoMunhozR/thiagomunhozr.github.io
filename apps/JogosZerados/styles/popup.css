@@ -93,6 +93,7 @@
     padding: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
+	color: #fff;
 }
 
 .suggestions-list li:hover {
