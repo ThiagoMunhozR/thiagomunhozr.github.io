@@ -65,7 +65,7 @@
     margin-bottom: 10px; /* Espaçamento inferior dos campos */
 }
 
-//* Estilo do contêiner do formulário dentro do popup */
+/* Estilo do contêiner do formulário dentro do popup */
 .popup form {
     display: flex;
     flex-direction: column;
@@ -98,4 +98,8 @@
 
 .suggestions-list li:hover {
     background-color: #444;
+}
+
+.popup p, .popup pre, .popup div {
+    color: #fff;
 }
